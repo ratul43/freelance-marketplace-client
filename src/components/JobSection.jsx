@@ -2,7 +2,7 @@ import React from 'react';
 
 const JobSection = ({job}) => {
  
- const {category, coverImage, postedAt, postedBy, summary, title, userEmail, _id} = job
+ const {category, postedAt, postedBy, summary, title, userEmail, _id} = job
     
   return (
     
