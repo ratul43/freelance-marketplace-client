@@ -37,7 +37,7 @@ const PopularCard = () => {
     return (
         <div className='max-w-6xl mx-auto flex gap-3'>
             {categories.map(category => 
-   <div className="relative w-xl mx-auto mt-20">
+   <div key={category.id} className="relative w-xl mx-auto mt-20">
   <img
     className="h-64 w-full object-cover rounded-md"
     src={category.image}
