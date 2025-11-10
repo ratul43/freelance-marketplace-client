@@ -58,7 +58,7 @@ const router = createBrowserRouter([
         element: <AcceptTaskPage></AcceptTaskPage>
       },
       {
-        path: "/myPostedJobs",
+        path: "/myAddedJobs",
         element: <MyPostedJobsPage></MyPostedJobsPage>
       },
       

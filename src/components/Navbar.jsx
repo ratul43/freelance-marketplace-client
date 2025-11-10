@@ -19,6 +19,9 @@ const Navbar = () => {
       <li><Link to="/allJobs">All Jobs</Link></li>
       <li><Link to="/addJob">Add a Job</Link></li>
       <li><Link to="/acceptTasks">My Accepted Tasks</Link></li>
+      {user &&       
+      <li><Link to="/myAddedJobs">My Added Jobs</Link></li>
+}
     </>
   );
 

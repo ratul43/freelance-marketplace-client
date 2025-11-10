@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../provider/AuthContext';
 
 const AddJobPage = () => {
+    const {user} = useContext(AuthContext)
 
     const navigate = useNavigate()
 
@@ -12,7 +14,7 @@ const AddJobPage = () => {
         category: '',
         summary: '',
         coverImage: '',
-        userEmail: '',
+        userEmail: user?.email,
         postedBy: ''
     });
 
@@ -116,7 +118,7 @@ const AddJobPage = () => {
                     <input
                         type="email"
                         name="userEmail"
-                        value={formData.userEmail}
+                        defaultValue={user?.email}
                         onChange={handleChange}
                         placeholder="your@email.com"
                         className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
