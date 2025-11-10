@@ -45,12 +45,12 @@ const router = createBrowserRouter([
       {
         path: "/allJobs/:id",
         element: <JobDetailsPage></JobDetailsPage>,
-        loader: ({params})=> fetch(`http://localhost:3000/jobDetails/${params.id}`)
+        loader: ({params})=> fetch(`http://localhost:3000/allJobs/${params.id}`)
       },
       {
         path: "/updateJob/:id",
         element: <UpdatePage></UpdatePage>,
-        loader: ({params})=> fetch(`http://localhost:3000/jobDetails/${params.id}`)
+        loader: ({params})=> fetch(`http://localhost:3000/allJobs/${params.id}`)
 
       },
       {

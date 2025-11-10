@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 
@@ -6,8 +7,7 @@ const UpdatePage = () => {
     const data = useLoaderData()
     const details = data.result
    
-    
-    
+     
 
 
 
@@ -30,7 +30,11 @@ const UpdatePage = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Updated Job:', formData);
-        // Add your update logic here
+        
+         axios.put(`http://localhost:3000/updateJob/${details._id}`, formData)
+        .then(data => console.log(data)
+        )
+
     };
 
     return (

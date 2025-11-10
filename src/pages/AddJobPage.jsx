@@ -24,7 +24,7 @@ const AddJobPage = () => {
         console.log('Job Data:', formData);
         
 
-        axios.post('http://localhost:3000/jobs', formData)
+        axios.post('http://localhost:3000/addJob', formData)
         .then(data => console.log(data)
         )
 

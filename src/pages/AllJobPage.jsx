@@ -9,7 +9,7 @@ const AllJobPage = () => {
     const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
-axios.get("http://localhost:3000/jobs")
+axios.get("http://localhost:3000/allJobs")
     .then(data => setJobs(data.data)
     )
     setLoading(false)

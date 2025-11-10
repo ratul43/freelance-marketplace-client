@@ -1,5 +1,7 @@
+import axios from 'axios';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router';
+import Swal from 'sweetalert2';
 
 const JobDetailsPage = () => {
 
@@ -9,7 +11,39 @@ const JobDetailsPage = () => {
     
     const {_id, title, postedBy, postedAt, category, summary, userEmail} = jobDetails
 
+    const handleDelete = () => {
+        Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    axios.delete(`http://localhost:3000/deleteJob/${_id}`)
+    .then(data => console.log(data)
+    
+    )
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+  }
+});
+    }
    
+
+
+
+
+
+
+
+
     return (
         <div className="max-w-4xl my-7 mx-auto bg-white rounded-lg shadow-md p-6">
             <div className="flex items-center gap-6">
@@ -33,7 +67,7 @@ const JobDetailsPage = () => {
                         <p><span className="font-semibold">Contact:</span> {userEmail}</p>
                         <p><span className="font-semibold">Posted at:</span> {postedAt}</p>
                         <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
-
+                <button onClick={handleDelete} className='btn btn-warning ml-4 mb-1'>Delete </button>
                     </div>
                     
                 </div>
