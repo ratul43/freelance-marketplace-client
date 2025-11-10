@@ -28,7 +28,7 @@ const Navbar = () => {
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <button className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Logout</button>
-          <Link to="/auth" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login/Register</Link>
+          <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login/Register</Link>
         </div>
 
         {/* Mobile Menu Button */}
