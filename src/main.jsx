@@ -14,6 +14,7 @@ import AllJobPage from './pages/AllJobPage.jsx';
 import AcceptTaskPage from './pages/AcceptTaskPage.jsx';
 import MyPostedJobsPage from './pages/MyPostedJobsPage.jsx';
 import JobDetailsPage from './pages/JobDetailsPage.jsx';
+import UpdatePage from './pages/UpdatePage.jsx';
 
 
 const router = createBrowserRouter([
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
         path: "/allJobs/:id",
         element: <JobDetailsPage></JobDetailsPage>,
         loader: ({params})=> fetch(`http://localhost:3000/jobDetails/${params.id}`)
+      },
+      {
+        path: "/updateJob/:id",
+        element: <UpdatePage></UpdatePage>,
+        loader: ({params})=> fetch(`http://localhost:3000/jobDetails/${params.id}`)
+
       },
       {
         path: "/acceptTasks",

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router';
+import { Link, useLoaderData } from 'react-router';
 
 const JobDetailsPage = () => {
 
@@ -17,23 +17,24 @@ const JobDetailsPage = () => {
                 <div className="w-96 h-96">
                     <img 
                         src="https://placehold.co/400" 
-                        alt={jobDetails.title}
+                        alt={title}
                         className="w-full h-full object-cover rounded-lg"
                     />
                 </div>
                 
                 {/* Content */}
                 <div className="flex-1">
-                    <h1 className="text-2xl font-bold text-gray-800 mb-2">{jobDetails.title}</h1>
-                    <p className="text-blue-600 font-semibold mb-4">{jobDetails.category}</p>
-                    <p className="text-gray-600 mb-4">{jobDetails.summary}</p>
+                    <h1 className="text-2xl font-bold text-gray-800 mb-2">{title}</h1>
+                    <p className="text-blue-600 font-semibold mb-4">{category}</p>
+                    <p className="text-gray-600 mb-4">{summary}</p>
                     
                     <div className="space-y-2 text-gray-700">
-                        <p><span className="font-semibold">Posted by:</span> {jobDetails.postedBy}</p>
-                        <p><span className="font-semibold">Contact:</span> {jobDetails.userEmail}</p>
-                        <p><span className="font-semibold">Posted at:</span> {jobDetails.postedAt}</p>
+                        <p><span className="font-semibold">Posted by:</span> {postedBy}</p>
+                        <p><span className="font-semibold">Contact:</span> {userEmail}</p>
+                        <p><span className="font-semibold">Posted at:</span> {postedAt}</p>
+                        <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
+
                     </div>
-                    
                     
                 </div>
             </div>
