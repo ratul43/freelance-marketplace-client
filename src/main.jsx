@@ -9,6 +9,10 @@ import LoginPage from './pages/LoginPage.jsx';
 import RegisterPage from './pages/RegisterPage.jsx';
 import AuthProvider from './provider/AuthProvider';
 import { ToastContainer } from 'react-toastify';
+import AddJobPage from './pages/AddJobPage.jsx';
+import AllJobPage from './pages/AllJobPage.jsx';
+import AcceptTaskPage from './pages/AcceptTaskPage.jsx';
+import MyPostedJobsPage from './pages/MyPostedJobsPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -22,12 +26,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: <LoginPage></LoginPage>
+        element:  <LoginPage></LoginPage>
       },
       {
         path: "/register",
         element: <RegisterPage></RegisterPage>
-      }
+      },
+      {
+        path: "/addJob",
+        element: <AddJobPage></AddJobPage>
+      },
+      {
+        path: "/allJob",
+        element: <AllJobPage></AllJobPage>
+      },
+      {
+        path: "/acceptTasks",
+        element: <AcceptTaskPage></AcceptTaskPage>
+      },
+      {
+        path: "/myPostedJobs",
+        element: <MyPostedJobsPage></MyPostedJobsPage>
+      },
+      
+
     ]
   },
   

@@ -17,7 +17,7 @@ const Banner = () => {
     
     return (
         <div>
-            <div className='max-w-6xl mx-auto border px-4 py-3 pb-7 flex justify-between items-center'>
+            <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex justify-between items-center'>
                 {/* header and button section  */}
                 <div className='w-100'>
                     <div>

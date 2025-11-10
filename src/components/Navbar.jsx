@@ -16,9 +16,9 @@ const Navbar = () => {
   const navLinks = (
     <>
       <li><Link to="/">Home</Link></li>
-      <li><Link to="/jobs">All Jobs</Link></li>
-      <li><Link to="/add-job">Add a Job</Link></li>
-      <li><Link to="/tasks">My Accepted Tasks</Link></li>
+      <li><Link to="/allJob">All Jobs</Link></li>
+      <li><Link to="/addJob">Add a Job</Link></li>
+      <li><Link to="/acceptTasks">My Accepted Tasks</Link></li>
     </>
   );
 
