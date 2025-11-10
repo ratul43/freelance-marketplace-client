@@ -1,7 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router';
+import { AuthContext } from '../provider/AuthContext';
 
 const Navbar = () => {
+
+  const { user, signOutUser } = useContext(AuthContext);
+
+   const handleSignOut = () => {
+    signOutUser();
+    
+  };
+
+
+
   const navLinks = (
     <>
       <li><Link to="/">Home</Link></li>
@@ -27,7 +38,7 @@ const Navbar = () => {
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
-          <button className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Logout</button>
+          <button onClick={handleSignOut} className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Logout</button>
           <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">Login/Register</Link>
         </div>
 

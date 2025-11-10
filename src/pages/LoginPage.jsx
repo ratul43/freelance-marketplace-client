@@ -1,11 +1,78 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useContext, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router';
+import { AuthContext } from '../provider/AuthContext';
+import { toast } from 'react-toastify';
 
 const LoginPage = () => {
+  const {signInExistingUser, googleSignIn, user} = useContext(AuthContext)
+
+        const [show, setShow] = useState(false);
+        const [mistake, setMistake] = useState()
+
+          const location = useLocation()
+
+  const navigate = useNavigate()
+
+const handleLoginSubmit = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value 
+    const password = e.target.password.value 
+    if(!email){
+      setMistake("Enter your email")
+      return
+    }
+
+    if(!password){
+      setMistake("Enter your password")
+      return
+    }
+    if(password.length < 6){
+      setMistake("Password should be at least 6 characters")
+      return
+    }
+    if (!/(?=.*[a-z])/.test(password)) {
+        setMistake("Password must contain at least one lowercase letter");
+        return
+    }
+
+     if (!/(?=.*[A-Z])/.test(password)) {
+        setMistake("Password must contain at least one uppercase letter");
+        return
+    }
+
+  signInExistingUser(email, password)  
+  .then(()=>{
+      navigate(`${location.state ? location.state : "/"}`)
+
+  }) 
+  .catch((err)=>{
+            toast.error(err.message)
+            return
+        })
+
+
+  }
+
+
+  const handleGoogleSignIn = () =>{
+    googleSignIn()
+    .then(()=>{
+            navigate(`${location.state ? location.state : "/"}`)
+    })
+    .catch((error) => {
+      console.error("Google Sign-In Error:", error.message);
+    });
+
+  }
+
+
+
+
+
     return (
         <div>
            <div className="w-full max-w-md my-7 mx-auto backdrop-blur-md bg-white/90 border border-gray-200 shadow-lg rounded-2xl p-8 hover:shadow-xl transition-shadow duration-300">
-              <form className="space-y-5">
+              <form onSubmit={handleLoginSubmit} className="space-y-5">
                 <h2 className="text-2xl font-semibold mb-2 text-center text-gray-800">
                   Log In
                 </h2>
@@ -33,10 +100,13 @@ const LoginPage = () => {
                 <button
                   type="button"
                   className="hover:underline cursor-pointer text-sm text-blue-600 hover:text-blue-800 transition-colors"
-                  onClick={""}
                 >
                   Forget password?
                 </button>
+
+{
+  mistake && <p className="text-red-500">{mistake}</p>
+}
 
                 <button
                   type="submit"
@@ -55,7 +125,7 @@ const LoginPage = () => {
                 {/* Google Signin */}
                 <button
                   type="button"
-                  onClick={""}
+                  onClick={handleGoogleSignIn}
                   className="flex items-center justify-center gap-3 bg-white text-gray-700 px-5 py-3 rounded-lg w-full font-semibold hover:bg-gray-50 transition-all duration-300 border border-gray-300 hover:border-gray-400 shadow-sm hover:shadow-md"
                 >
                   <img
