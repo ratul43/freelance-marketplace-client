@@ -1,16 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 const AllJobPage = () => {
 
     const [jobs, setJobs] = useState([])
+    const [loading, setLoading] = useState(true)
 
     useEffect(()=>{
 axios.get("http://localhost:3000/jobs")
     .then(data => setJobs(data.data)
     )
+    setLoading(false)
     }, [])
-    console.log(jobs);
+    
+
+    if(loading) {
+        return <ClimbingBoxLoader className='max-w-6xl mx-auto' color="#e74c3c" />
+    }
 
     return (
         <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
@@ -32,9 +40,12 @@ axios.get("http://localhost:3000/jobs")
         <p className="text-gray-500 text-sm mt-2">Posted at: {job.postedAt}</p>
       </div>
 
-      <button className="w-full bg-blue-500 text-white py-2 rounded-md mt-4 hover:bg-blue-600">
-        Apply Now
-      </button>
+     
+        <div className="card-actions">
+                    <Link to={`/allJobs/${job._id}`} className="btn btn-primary w-full">View Details</Link>
+                </div>
+      
+     
     </div>)}
 
 

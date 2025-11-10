@@ -13,6 +13,7 @@ import AddJobPage from './pages/AddJobPage.jsx';
 import AllJobPage from './pages/AllJobPage.jsx';
 import AcceptTaskPage from './pages/AcceptTaskPage.jsx';
 import MyPostedJobsPage from './pages/MyPostedJobsPage.jsx';
+import JobDetailsPage from './pages/JobDetailsPage.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,8 +38,13 @@ const router = createBrowserRouter([
         element: <AddJobPage></AddJobPage>
       },
       {
-        path: "/allJob",
+        path: "/allJobs",
         element: <AllJobPage></AllJobPage>
+      },
+      {
+        path: "/allJobs/:id",
+        element: <JobDetailsPage></JobDetailsPage>,
+        loader: ({params})=> fetch(`http://localhost:3000/jobDetails/${params.id}`)
       },
       {
         path: "/acceptTasks",
