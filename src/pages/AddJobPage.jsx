@@ -1,7 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const AddJobPage = () => {
+
+    const navigate = useNavigate()
+
     const [formData, setFormData] = useState({
         title: '',
         category: '',
@@ -28,7 +33,9 @@ const AddJobPage = () => {
         .then(data => console.log(data)
         )
 
+        toast.success("Job added successfully")
 
+        navigate("/")
 
     };
 

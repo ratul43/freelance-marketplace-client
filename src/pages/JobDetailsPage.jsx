@@ -1,15 +1,15 @@
 import axios from 'axios';
 import React from 'react';
-import { Link, useLoaderData } from 'react-router';
+import { Link, useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 
 const JobDetailsPage = () => {
 
     const data = useLoaderData()
-    const jobDetails = data.result 
-    
-    
+    const jobDetails = data.result  
     const {_id, title, postedBy, postedAt, category, summary, userEmail} = jobDetails
+
+    const navigate = useNavigate()
 
     const handleDelete = () => {
         Swal.fire({
@@ -32,6 +32,7 @@ const JobDetailsPage = () => {
       text: "Your file has been deleted.",
       icon: "success"
     });
+    navigate("/")
   }
 });
     }

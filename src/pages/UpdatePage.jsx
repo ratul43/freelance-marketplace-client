@@ -1,13 +1,14 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 
 const UpdatePage = () => {
 
     const data = useLoaderData()
     const details = data.result
    
-     
+     const navigate = useNavigate()
 
 
 
@@ -35,6 +36,9 @@ const UpdatePage = () => {
         .then(data => console.log(data)
         )
 
+        toast.success("Job information updated successfully")
+
+        navigate("/")
     };
 
     return (

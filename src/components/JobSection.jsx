@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 const JobSection = ({job}) => {
  
@@ -23,9 +24,9 @@ const JobSection = ({job}) => {
         <p className="text-gray-500 text-sm mt-2">Posted at: {postedAt}</p>
       </div>
 
-      <button className="w-full bg-blue-500 text-white py-2 rounded-md mt-4 hover:bg-blue-600">
-        Apply Now
-      </button>
+      <div className="w-full text-center bg-blue-500 text-white py-2 rounded-md mt-4 hover:bg-blue-600">
+        <Link to={`/allJobs/${job._id}`}>Apply Now</Link>
+      </div>
     </div>
   );
 };
