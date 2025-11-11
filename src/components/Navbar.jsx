@@ -1,15 +1,36 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 
 const Navbar = () => {
 
   const { user, signOutUser } = useContext(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || "light" )
+
+  useEffect(()=>{
+    const html = document.querySelector('html')
+    html.setAttribute("data-theme", theme)
+    localStorage.setItem("theme", theme)
+  }, [theme])
+
+ const handleTheme = (checked) => {
+  
+  setTheme(checked? "dark" : "light")
+
+  }
+
+
 
    const handleSignOut = () => {
     signOutUser();
     
   };
+
+ 
+
+
+
+
 
 
 
@@ -32,13 +53,6 @@ const Navbar = () => {
 
     )
 
-
-
-    // <>
-    
-    //   
-
-    // </>
   );
 
   return (
@@ -66,6 +80,14 @@ const Navbar = () => {
               Login/Register
             </Link>
           )}
+
+     <input
+           onChange={(e) => handleTheme(e.target.checked)}
+           type="checkbox"
+           defaultChecked={localStorage.getItem('theme') === "dark"}
+           className="toggle"/>
+
+
         </div>
 
         {/* Mobile Menu Button */}
@@ -88,6 +110,15 @@ const Navbar = () => {
                 </Link>
               </li>
             )}
+
+             <input
+           onChange={(e) => handleTheme(e.target.checked)}
+           type="checkbox"
+           defaultChecked={localStorage.getItem('theme') === "dark"}
+           className="toggle"/>
+
+
+
           </ul>
         </div>
 

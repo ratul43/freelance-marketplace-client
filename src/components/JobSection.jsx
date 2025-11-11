@@ -16,7 +16,7 @@ const JobSection = ({job}) => {
       
       <div className="mt-3">
 
-        <h3 className="text-lg font-bold text-gray-800">{title}</h3>
+        <h3 className="text-lg font-bold text-cyan-800">{title}</h3>
         <p className="text-green-600 font-medium text-sm">{category}</p>
         <p className="text-gray-700 mt-2">{summary}</p>
         <p className="text-gray-600 text-sm">Posted by: {postedBy}</p>
