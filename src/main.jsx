@@ -15,6 +15,7 @@ import AcceptTaskPage from './pages/AcceptTaskPage.jsx';
 import MyPostedJobsPage from './pages/MyPostedJobsPage.jsx';
 import JobDetailsPage from './pages/JobDetailsPage.jsx';
 import UpdatePage from './pages/UpdatePage.jsx';
+import PrivateRoute from './provider/PrivateRoute.jsx';
 
 
 const router = createBrowserRouter([
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/addJob",
-        element: <AddJobPage></AddJobPage>
+        element: <PrivateRoute> <AddJobPage></AddJobPage> </PrivateRoute>
       },
       {
         path: "/allJobs",
@@ -44,22 +45,22 @@ const router = createBrowserRouter([
       },
       {
         path: "/allJobs/:id",
-        element: <JobDetailsPage></JobDetailsPage>,
+        element: <PrivateRoute> <JobDetailsPage></JobDetailsPage> </PrivateRoute>     ,
         loader: ({params})=> fetch(`http://localhost:3000/allJobs/${params.id}`)
       },
       {
         path: "/updateJob/:id",
-        element: <UpdatePage></UpdatePage>,
+        element: <PrivateRoute> <UpdatePage></UpdatePage> </PrivateRoute> ,
         loader: ({params})=> fetch(`http://localhost:3000/allJobs/${params.id}`)
 
       },
       {
         path: "/acceptTasks",
-        element: <AcceptTaskPage></AcceptTaskPage>
+        element:  <PrivateRoute> <AcceptTaskPage></AcceptTaskPage> </PrivateRoute>  
       },
       {
         path: "/myAddedJobs",
-        element: <MyPostedJobsPage></MyPostedJobsPage>
+        element: <PrivateRoute> <MyPostedJobsPage></MyPostedJobsPage> </PrivateRoute>  
       },
       
 

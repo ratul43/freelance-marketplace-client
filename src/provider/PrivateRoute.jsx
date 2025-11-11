@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router';
+import { Navigate, useLocation } from 'react-router';
 import { AuthContext } from './AuthContext';
 import { ClimbingBoxLoader } from 'react-spinners';
 
@@ -21,7 +21,7 @@ if(loading){
     }
 
 
-      return <Navigate state={location.pathname} to={"/signin"}></Navigate>
+      return <Navigate state={location.pathname} to={"/login"}></Navigate>
 
 };
 

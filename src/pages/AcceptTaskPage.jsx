@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const AcceptTaskPage = () => {
 
@@ -9,13 +10,26 @@ const AcceptTaskPage = () => {
         axios.get(`http://localhost:3000/my-accepted-tasks`)
         .then(data => setAcceptJob(data.data))
     }, [])
-    console.log(acceptJob);
+
+    const handleDelete = (value) => {
+      
+      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
+      .then(()=>{
+        
+      setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
+      toast.success("Job deleted")
+
+      })
+      .catch(error=>{
+        toast.error(error.message)
+      })
+    }
     
 
     return (
         <div className='max-w-4xl mx-auto p-6'>
 
-      {acceptJob.map(job=>           <div className="space-y-4">
+      {acceptJob.map(job=>           <div key={job._id} className="space-y-4">
           <div className="bg-white rounded-lg shadow-md p-6 border my-3">
             <div className="flex justify-between items-start">
               <div>
@@ -35,7 +49,7 @@ const AcceptTaskPage = () => {
                 <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                   Edit
                 </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                <button onClick={()=>handleDelete(job._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                   Delete
                 </button>
               </div>

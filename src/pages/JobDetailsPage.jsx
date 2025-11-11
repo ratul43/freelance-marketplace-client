@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { Link, useLoaderData, useNavigate } from 'react-router';
+import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const JobDetailsPage = () => {
@@ -51,7 +52,8 @@ const JobDetailsPage = () => {
 
         axios.post(`http://localhost:3000/my-accepted-tasks`, acceptData)
         .then(data=> console.log(data)
-        )
+    )
+    toast.success("Job accepted")
 
     }
 
