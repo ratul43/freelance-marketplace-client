@@ -7,13 +7,32 @@ const AllJobPage = () => {
 
     const [jobs, setJobs] = useState([])
     const [loading, setLoading] = useState(true)
+        const [sortOrder, setSortOrder] = useState('none')
+
 
     useEffect(()=>{
-axios.get("http://localhost:3000/allJobs")
-    .then(data => setJobs(data.data)
-    )
-    setLoading(false)
-    }, [])
+
+      setLoading(true)
+      let url = "http://localhost:3000/allJobs"
+
+      if(sortOrder === "post-asc") {
+        url = "http://localhost:3000/sort-ascending"
+      }
+      else if (sortOrder === "post-desc") {
+        url = "http://localhost:3000/sort-descending"
+      }
+
+axios.get(url)
+    .then(data => {
+      setJobs(data.data)
+      setLoading(false)
+    })
+    .catch(error => {
+      console.error('Error fetching jobs: ', error.message)
+      setLoading(false)
+    })
+    
+    }, [sortOrder])
     
 
     if(loading) {
@@ -21,7 +40,22 @@ axios.get("http://localhost:3000/allJobs")
     }
 
     return (
-        <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
+      <div> 
+
+      <label className="form-control w-full max-w-xs">
+          <select
+          value={sortOrder}
+          onChange={e=> setSortOrder(e.target.value)}
+            className="select select-bordered"
+            
+          >
+            <option value="none">Sort by posted time</option>
+            <option value="post-asc">Low → High</option>
+            <option value="post-desc">High → Low</option>
+          </select>
+        </label>
+
+ <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
 
     {jobs.map(job=> <div key={job._id} className="border border-gray-300 rounded-lg p-4 max-w-sm mx-auto shadow-sm">
       <img src='https://placehold.co/400'
@@ -50,6 +84,9 @@ axios.get("http://localhost:3000/allJobs")
 
 
         </div>
+
+      </div>
+       
     );
 };
 
