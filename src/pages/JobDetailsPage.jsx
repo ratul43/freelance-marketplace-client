@@ -1,10 +1,13 @@
 import axios from 'axios';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../provider/AuthContext';
 
 const JobDetailsPage = () => {
+
+    const {user} = useContext(AuthContext)
 
     const data = useLoaderData()
     const jobDetails = data.result  
@@ -82,7 +85,13 @@ const JobDetailsPage = () => {
                         <p><span className="font-semibold">Posted at:</span> {postedAt}</p>
                         <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
                 <button onClick={handleDelete} className='btn btn-warning ml-4 mb-1'>Delete </button>
+        {
+            user.email !== userEmail ?
                 <button onClick={handleAccept} className='btn btn-success ml-4 mb-1'>Accept </button>
+                : 
+                ""
+            
+        }
                     </div>
                     
                 </div>
