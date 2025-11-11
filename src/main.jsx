@@ -57,7 +57,7 @@ const router = createBrowserRouter([
 
       },
       {
-        path: "/acceptTasks",
+        path: "/my-accepted-tasks",
         element:  <PrivateRoute> <AcceptTaskPage></AcceptTaskPage> </PrivateRoute>  
       },
       {

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import axios from "axios";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
 const MyPostedJobsPage = () => {
@@ -88,6 +88,9 @@ const MyPostedJobsPage = () => {
               </div>
               <div className="flex gap-2">
                 
+                <Link to={`/updateJob/${job._id}`} className="bg-cyan-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                  Update
+                </Link>
                 <button onClick={()=>handleDelete(job._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                   Delete
                 </button>
