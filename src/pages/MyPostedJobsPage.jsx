@@ -27,7 +27,7 @@ const MyPostedJobsPage = () => {
         </h2>
 
         {
-            postedJob.map(job=><div className="space-y-4">
+            postedJob.map(job=> <div className="space-y-4">
           <div key={job._id} className="bg-white rounded-lg shadow-md p-6 border my-3">
             <div className="flex justify-between items-start">
               <div>
@@ -38,6 +38,9 @@ const MyPostedJobsPage = () => {
                 <p className="text-gray-600 mt-2">{job.summary}</p>
                 <p className="text-sm text-gray-500 mt-2">
                   Posted on: {job.postedAt}
+                </p>
+                <p className="text-sm text-gray-500 mt-2">
+                  Posted by: {job.userEmail}
                 </p>
               </div>
               <div className="flex gap-2">
