@@ -7,7 +7,7 @@ const JobDetailsPage = () => {
 
     const data = useLoaderData()
     const jobDetails = data.result  
-    const {_id, title, postedBy, postedAt, category, summary, userEmail} = jobDetails
+    const {_id, title, postedBy, coverImage, postedAt, category, summary, userEmail} = jobDetails
 
     const navigate = useNavigate()
 
@@ -38,7 +38,22 @@ const JobDetailsPage = () => {
     }
    
 
+    const handleAccept = () => {
+        const acceptData = {
+            title: title,
+            category: category,
+            summary: summary,
+            coverImage: coverImage,
+            postedBy: userEmail,
+            postedAt: postedAt
+            
+        }
 
+        axios.post(`http://localhost:3000/my-accepted-tasks`, acceptData)
+        .then(data=> console.log(data)
+        )
+
+    }
 
 
 
@@ -69,6 +84,7 @@ const JobDetailsPage = () => {
                         <p><span className="font-semibold">Posted at:</span> {postedAt}</p>
                         <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
                 <button onClick={handleDelete} className='btn btn-warning ml-4 mb-1'>Delete </button>
+                <button onClick={handleAccept} className='btn btn-success ml-4 mb-1'>Accept </button>
                     </div>
                     
                 </div>
