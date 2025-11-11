@@ -18,11 +18,13 @@ const AddJobPage = () => {
         postedBy: ''
     });
 
+    const now = new Date()
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
-            postedAt: new Date()
+            postedAt: now.toLocaleDateString('en-CA')
         });
     };
 
