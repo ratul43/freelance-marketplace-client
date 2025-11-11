@@ -17,13 +17,34 @@ const AcceptTaskPage = () => {
       .then(()=>{
         
       setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
-      toast.success("Job deleted")
+
+              toast.success("Job done")
 
       })
       .catch(error=>{
         toast.error(error.message)
       })
     }
+
+    const handleCancel = (value) => {
+      
+      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
+      .then(()=>{
+        
+      setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
+
+              toast.success("Job canceled")
+
+      })
+      .catch(error=>{
+        toast.error(error.message)
+      })
+    }
+
+
+
+
+
     
 
     return (
@@ -46,11 +67,11 @@ const AcceptTaskPage = () => {
                 </p>
               </div>
               <div className="flex gap-2">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                  Edit
+                <button onClick={()=>handleDelete(job._id)} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                  Done
                 </button>
-                <button onClick={()=>handleDelete(job._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-                  Delete
+                <button onClick={()=>handleCancel(job._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                  Cancel
                 </button>
               </div>
             </div>
