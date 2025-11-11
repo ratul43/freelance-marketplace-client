@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React from 'react';
-import { Link, useLoaderData, useNavigate } from 'react-router';
+import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
@@ -56,10 +56,6 @@ const JobDetailsPage = () => {
     toast.success("Job accepted")
 
     }
-
-
-
-
 
 
     return (

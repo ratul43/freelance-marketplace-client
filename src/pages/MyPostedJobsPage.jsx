@@ -1,10 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../provider/AuthContext";
 import axios from "axios";
+import { useNavigate } from "react-router";
+import Swal from "sweetalert2";
 
 const MyPostedJobsPage = () => {
   const { user, loading } = useContext(AuthContext);
     const [postedJob, setPostedJob] = useState([])
+
+    const navigate = useNavigate()
+
+
+
+
   useEffect(() => {
     if (user) {
       axios
@@ -12,6 +20,41 @@ const MyPostedJobsPage = () => {
         .then((data) => setPostedJob(data.data.result));
     }
   }, [user]);
+
+
+  console.log(postedJob);
+  
+
+
+
+  const handleDelete = (id) => {
+        Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    axios.delete(`http://localhost:3000/deleteJob/${id}`)
+    .then(data => console.log(data)
+    
+    )
+    Swal.fire({
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      icon: "success"
+    });
+    navigate("/")
+  }
+});
+    }
+
+
+
 
 
   
@@ -44,10 +87,8 @@ const MyPostedJobsPage = () => {
                 </p>
               </div>
               <div className="flex gap-2">
-                <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                  Edit
-                </button>
-                <button className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                
+                <button onClick={()=>handleDelete(job._id)} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
                   Delete
                 </button>
               </div>

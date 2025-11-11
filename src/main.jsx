@@ -16,12 +16,14 @@ import MyPostedJobsPage from './pages/MyPostedJobsPage.jsx';
 import JobDetailsPage from './pages/JobDetailsPage.jsx';
 import UpdatePage from './pages/UpdatePage.jsx';
 import PrivateRoute from './provider/PrivateRoute.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage/>,
     children: [
       {
         index: true,
