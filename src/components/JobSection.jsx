@@ -3,12 +3,12 @@ import { Link } from 'react-router';
 
 const JobSection = ({job}) => {
  
- const {category, postedAt, postedBy, summary, title, userEmail, _id} = job
+ const {category, coverImage, postedAt, postedBy, summary, title, userEmail, _id} = job
     
   return (
     
     <div className="border border-gray-300 rounded-lg p-4 max-w-sm mx-auto shadow-sm">
-      <img src='https://placehold.co/400'
+      <img src={coverImage}
         
         alt="Job"
         className="w-full h-40 object-cover rounded-md"
@@ -25,7 +25,7 @@ const JobSection = ({job}) => {
       </div>
 
       <div className="w-full text-center bg-blue-500 text-white py-2 rounded-md mt-4 hover:bg-blue-600">
-        <Link to={`/allJobs/${job._id}`}>Apply Now</Link>
+        <Link to={`/allJobs/${job._id}`}>View Details</Link>
       </div>
     </div>
   );

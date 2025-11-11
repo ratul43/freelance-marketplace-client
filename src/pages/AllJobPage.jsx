@@ -60,7 +60,7 @@ axios.get(url)
  <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
 
     {jobs.map(job=> <div key={job._id} className="border border-gray-300 rounded-lg p-4 max-w-sm mx-auto shadow-sm">
-      <img src='https://placehold.co/400'
+      <img src={job.coverImage}
         
         alt="Job"
         className="w-full h-40 object-cover rounded-md"
