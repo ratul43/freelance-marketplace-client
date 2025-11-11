@@ -40,9 +40,10 @@ axios.get(url)
     }
 
     return (
-      <div> 
+      <div className='my-7'> 
 
-      <label className="form-control w-full max-w-xs">
+     <div className='max-w-6xl mx-auto flex justify-end'>
+       <label className="form-control w-full max-w-xs">
           <select
           value={sortOrder}
           onChange={e=> setSortOrder(e.target.value)}
@@ -54,6 +55,7 @@ axios.get(url)
             <option value="post-desc">High → Low</option>
           </select>
         </label>
+     </div>
 
  <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
 
