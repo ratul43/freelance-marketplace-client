@@ -2,9 +2,11 @@ import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import { toast } from 'react-toastify';
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 
 const LoginPage = () => {
-  const {signInExistingUser, googleSignIn, user} = useContext(AuthContext)
+  const {signInExistingUser, googleSignIn } = useContext(AuthContext)
 
         const [show, setShow] = useState(false);
         const [mistake, setMistake] = useState()
@@ -90,11 +92,17 @@ const handleLoginSubmit = (e) => {
                 <div className="relative">
                   <label className="block text-sm mb-1 text-gray-700">Password</label>
                   <input
-                    type="password"
+                    type={show ? "text" : "password"}
                     name="password"
                     placeholder="••••••••"
                     className="input input-bordered w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   />
+          <span
+                              onClick={() => setShow(!show)}
+                              className="absolute right-2 top-9 cursor-pointer z-50"
+                            >
+                              {show ? <FaEye /> : <IoEyeOff />}
+                            </span>
                 </div>
 
                 <button

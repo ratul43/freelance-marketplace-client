@@ -2,10 +2,12 @@ import React, { useContext, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 import { toast } from 'react-toastify';
-
+import { FaEye } from "react-icons/fa";
+import { IoEyeOff } from "react-icons/io5";
 const RegisterPage = () => {
 
   const {signUpNewUser, updateUserProfile, googleSignIn, user} = useContext(AuthContext)
+        const [show, setShow] = useState(false);
 
       const [error, setError] = useState()
 
@@ -19,21 +21,22 @@ const RegisterPage = () => {
     const password = e.target.password.value 
     const email = e.target.email.value 
     const photo = e.target.photo.value
-
+    
     if(!name){
       setError("Please provide your name")
       return
     }
-    if(!email){
-      setError("Please provide your email")
-      return
-    }
+    
     if(!photo){
       setError("Please provide your photo url")
       return
     }
 
-
+if(!email){
+      setError("Please provide your email")
+      return
+    }
+    
     if (password.length < 6) {
         setError("Password must be at least 6 characters long");
         return
@@ -108,20 +111,31 @@ const RegisterPage = () => {
                   <input
                     type="email"
                     name="email"
-                    placeholder="example@email.com"
+                    placeholder="example@gmail.com"
                     className="input input-bordered w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
                   />
                 </div>
 
-                <div className="relative">
-                  <label className="block text-sm mb-1 text-gray-700">Password</label>
-                  <input
-                    type="password"
-                    name="password"
-                    placeholder="••••••••"
-                    className="input input-bordered w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                  />
-                </div>
+               <div className="relative">
+                                 <label className="block text-sm mb-1 text-gray-700">Password</label>
+                                 <input
+                                   type={show ? "text" : "password"}
+                                   name="password"
+                                   placeholder="••••••••"
+                                   className="input input-bordered w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+                                 />
+                         <span
+                                             onClick={() => setShow(!show)}
+                                             className="absolute right-2 top-9 cursor-pointer z-50"
+                                           >
+                                             {show ? <FaEye /> : <IoEyeOff />}
+                                           </span>
+                               </div>
+
+{
+  error && <p className="text-red-500">{error}</p>
+}
+
 
                 <button
                   type="submit"
