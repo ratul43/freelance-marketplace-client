@@ -42,6 +42,7 @@ const Navbar = () => {
       <li><Link to="/addJob">Add a Job</Link></li>
       <li><Link to="/my-accepted-tasks">My Accepted Tasks</Link></li>
       <li><Link to="/myPostedJobs">My Added Jobs</Link></li>
+     
       </>
       
     ) : (
@@ -66,15 +67,39 @@ const Navbar = () => {
         <div className="hidden md:flex">
           <ul className="menu menu-horizontal px-1 font-medium text-gray-700">
             {navLinks}
+
           </ul>
         </div>
 
         {/* Auth Buttons */}
         <div className="hidden md:flex items-center gap-4">
 {user ? (
-            <button onClick={handleSignOut} className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
-              Logout
-            </button>
+
+  <div className="relative group">
+  <div className="btn btn-ghost btn-circle avatar">
+    <div className="w-10 rounded-full">
+      <img alt="profile" src={user.photoURL} />
+    </div>
+  </div>
+  <div className="absolute right-0 mt-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+    <div className="menu menu-sm bg-base-100 rounded-box p-2 shadow-lg">
+      <li className="list-none">
+        <Link to={"/profile"} className="text-sm font-semibold block mb-1">
+          Profile
+        </Link>
+        <p className="text-black/80 text-sm mb-2">{user?.displayName}</p>
+        <p className="text-black/80 text-sm mb-2">{user?.email}</p>
+      </li>
+      <li className="list-none mt-2">
+        <button onClick={handleSignOut} className="btn bg-blue-500 text-white btn-sm w-full">
+          Logout
+        </button>
+      </li>
+    </div>
+  </div>
+</div>
+
+            
           ) : (
             <Link to="/login" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
               Login/Register
@@ -98,11 +123,39 @@ const Navbar = () => {
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 font-medium">
             {navLinks}
 {user ? (
-              <li className="mt-2">
-                <button onClick={handleSignOut} className="btn btn-error btn-sm w-full">
-                  Logout
-                </button>
-              </li>
+
+
+  <div>
+
+
+  <div className="relative group">
+  <div className="btn btn-ghost btn-circle avatar">
+    <div className="w-10 rounded-full">
+      <img alt="profile" src={user.photoURL} />
+    </div>
+  </div>
+  <div className="absolute right-0 mt-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+    <div className="menu menu-sm bg-base-100 rounded-box p-2 shadow-lg">
+      <li className="list-none">
+        <Link to={"/profile"} className="text-sm font-semibold block mb-1">
+          Profile
+        </Link>
+        <p className="text-black/80 text-sm mb-2">{user?.displayName}</p>
+        <p className="text-black/80 text-sm mb-2">{user?.email}</p>
+      </li>
+      <li className="list-none mt-2">
+        <button onClick={handleSignOut} className="btn bg-blue-500 text-white btn-sm w-full">
+          Logout
+        </button>
+      </li>
+    </div>
+  </div>
+</div>
+
+
+    
+  </div>
+              
             ) : (
               <li>
                 <Link to="/login" className="btn btn-primary btn-sm w-full mt-1">

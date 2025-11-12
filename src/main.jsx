@@ -17,6 +17,7 @@ import JobDetailsPage from './pages/JobDetailsPage.jsx';
 import UpdatePage from './pages/UpdatePage.jsx';
 import PrivateRoute from './provider/PrivateRoute.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element:  <LoginPage></LoginPage>
+      },
+      {
+        path:"/profile",
+        element: <PrivateRoute> <ProfilePage></ProfilePage> </PrivateRoute> 
       },
       {
         path: "/register",
