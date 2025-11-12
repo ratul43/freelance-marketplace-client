@@ -57,7 +57,7 @@ axios.get(url)
         </label>
      </div>
 
- <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
+ <div className='grid my-4 lg:grid-cols-3 md:grid-cols-2 gap-3 max-w-6xl mx-auto'>
 
     {jobs.map(job=> <div key={job._id} className="border border-gray-300 rounded-lg p-4 shadow-sm flex flex-col h-full"> 
       <img 
