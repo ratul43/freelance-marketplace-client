@@ -3,18 +3,31 @@ import deskWork from "../../deskwork.json";
 import Lottie from 'lottie-react';
 import TextType from './TextType';
 import JobSection from './JobSection';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 const Banner = () => {
 
     const [jobs, setJobs] = useState([])
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         fetch('http://localhost:3000/latest-jobs')
             .then(res => res.json())
-            .then(data => setJobs(data))
-            .catch(error => console.error('Error fetching jobs:', error))
+            .then(data => {
+                setJobs(data)
+                setLoading(false)
+            } 
+        )
+            .catch(error => {
+                console.error('Error fetching jobs:', error)
+             setLoading(false);
+            })
     }, [])
     
+
+
+
     return (
         <div>
             <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex justify-between items-center'>
@@ -52,12 +65,24 @@ const Banner = () => {
             </div>
 
             <h1 className='text-center text-5xl my-7'>Jobs Section</h1>
-            {/* Jobs Grid */}
+
+        {loading && (
+                <div className="flex justify-center items-center my-12">
+                    <ClimbingBoxLoader color="#e74c3c" size={20} />
+                </div>
+            )}
+
+
+
+            {!loading && (
             <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
                 {jobs?.map((job) => (
                     <JobSection key={job._id || job.title} job={job} />
                 ))}
             </div>
+            )}
+
+            
         </div>
     );
 };

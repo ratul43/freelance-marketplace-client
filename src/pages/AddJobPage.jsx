@@ -24,13 +24,20 @@ const AddJobPage = () => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value,
-            postedAt: now.toLocaleDateString('en-CA')
+            postedAt: now.toLocaleString('en-CA', {
+    month: '2-digit',
+    day: '2-digit',
+    year: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+})
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Job Data:', formData);
+        
         
 
         axios.post('http://localhost:3000/addJob', formData)
