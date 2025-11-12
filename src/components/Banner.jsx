@@ -30,7 +30,7 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex justify-between items-center'>
+            <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex md:flex-row flex-col justify-between items-center'>
                 {/* header and button section  */}
                 <div className='w-100'>
                     <div>
@@ -75,7 +75,7 @@ const Banner = () => {
 
 
             {!loading && (
-            <div className='grid my-4 lg:grid-cols-3 grid-cols-2 gap-3 max-w-6xl mx-auto'>
+            <div className='grid my-4 lg:grid-cols-3 md:grid-cols-2 gap-3 max-w-6xl mx-auto'>
                 {jobs?.map((job) => (
                     <JobSection key={job._id || job.title} job={job} />
                 ))}
