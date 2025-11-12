@@ -15,7 +15,7 @@ const AddJobPage = () => {
         summary: '',
         coverImage: '',
         userEmail: user?.email,
-        postedBy: ''
+        postedBy: user?.displayName
     });
 
     const now = new Date()

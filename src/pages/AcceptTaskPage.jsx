@@ -44,6 +44,9 @@ const AcceptTaskPage = () => {
       })
     }
 
+    console.log(acceptJob);
+    
+
   if(acceptJob.length == 0){
     return <h1 className='font-bold ml-4 mt-7 text-cyan-500 text-xl'>There's no record</h1>
   }    

@@ -21,10 +21,6 @@ const MyPostedJobsPage = () => {
     }
   }, [user]);
 
-  
-
-
-
   const handleDelete = (id) => {
         Swal.fire({
   title: "Are you sure?",
@@ -88,7 +84,10 @@ const MyPostedJobsPage = () => {
                   Posted on: {job.postedAt}
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
-                  Posted by: {job.userEmail}
+                  Posted by: {job.postedBy}
+                </p>
+                <p className="text-sm text-gray-500 mt-2">
+                  Contact: {job.userEmail}
                 </p>
               </div>
               <div className="flex gap-2">
