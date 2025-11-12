@@ -75,8 +75,8 @@ const MyPostedJobsPage = () => {
         </h2>
 
         {
-            postedJob.map(job=> <div className="space-y-4">
-          <div key={job._id} className="bg-white rounded-lg shadow-md p-6 border my-3">
+            postedJob.map(job=> <div key={job._id} className="space-y-4">
+          <div className="bg-white rounded-lg shadow-md p-6 border my-3">
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="text-xl font-semibold text-gray-800">

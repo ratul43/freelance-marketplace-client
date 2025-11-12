@@ -61,7 +61,7 @@ const router = createBrowserRouter([
         element:  <PrivateRoute> <AcceptTaskPage></AcceptTaskPage> </PrivateRoute>  
       },
       {
-        path: "/myAddedJobs",
+        path: "/myPostedJobs",
         element: <PrivateRoute> <MyPostedJobsPage></MyPostedJobsPage> </PrivateRoute>  
       },
       
