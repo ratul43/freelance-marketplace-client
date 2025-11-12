@@ -21,8 +21,6 @@ const MyPostedJobsPage = () => {
     }
   }, [user]);
 
-
-  console.log(postedJob);
   
 
 
@@ -61,6 +59,13 @@ const MyPostedJobsPage = () => {
   if (loading) {
     return <h1>Loading......</h1>;
   }
+
+  if(postedJob.length == 0) {
+    return <h1 className='font-bold ml-4 mt-7 text-cyan-500 text-xl'> No data available</h1>
+  }
+
+
+
 
   if (user) {
     return (

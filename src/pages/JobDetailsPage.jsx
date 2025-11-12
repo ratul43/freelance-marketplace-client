@@ -49,7 +49,8 @@ const JobDetailsPage = () => {
             summary: summary,
             coverImage: coverImage,
             postedBy: userEmail,
-            postedAt: postedAt
+            postedAt: postedAt,
+            addedBy: user.email
             
         }
 
@@ -83,13 +84,16 @@ const JobDetailsPage = () => {
                         <p><span className="font-semibold">Posted by:</span> {postedBy}</p>
                         <p><span className="font-semibold">Contact:</span> {userEmail}</p>
                         <p><span className="font-semibold">Posted at:</span> {postedAt}</p>
-                        <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
-                <button onClick={handleDelete} className='btn btn-warning ml-4 mb-1'>Delete </button>
+                      
+
         {
             user.email !== userEmail ?
                 <button onClick={handleAccept} className='btn btn-success ml-4 mb-1'>Accept </button>
                 : 
-                ""
+                                       <div>
+                                        <Link to={`/updateJob/${_id}`} className="btn btn-primary">Update</Link>
+                <button onClick={handleDelete} className='btn btn-warning ml-4 mb-1'>Delete </button>
+                                       </div>
             
         }
                     </div>

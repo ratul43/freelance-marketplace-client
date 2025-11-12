@@ -1,15 +1,18 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { AuthContext } from '../provider/AuthContext';
 
 const AcceptTaskPage = () => {
+
+  const {user} = useContext(AuthContext)
 
     const [acceptJob, setAcceptJob] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/my-accepted-tasks`)
+        axios.get(`http://localhost:3000/my-accepted-tasks?email=${user.email}`)
         .then(data => setAcceptJob(data.data))
-    }, [])
+    }, [user.email])
 
     const handleDelete = (value) => {
       
@@ -41,7 +44,9 @@ const AcceptTaskPage = () => {
       })
     }
 
-
+  if(acceptJob.length == 0){
+    return <h1 className='font-bold ml-4 mt-7 text-cyan-500 text-xl'>There's no record</h1>
+  }    
 
 
 
