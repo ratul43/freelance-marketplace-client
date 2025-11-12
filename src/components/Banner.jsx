@@ -30,11 +30,11 @@ const Banner = () => {
 
     return (
         <div>
-            <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex md:flex-row flex-col justify-between items-center'>
+            <div className='max-w-6xl mx-auto px-4 py-3 pb-7 flex md:flex-row flex-col gap-y-4 justify-between items-center'>
                 {/* header and button section  */}
-                <div className='w-100'>
+                <div className='w-full'>
                     <div>
-                        <h1 className='text-3xl font-semibold'>
+                        <h1 className='md:text-3xl text-xl font-semibold'>
                         <TextType 
                             text={["Reliable place for job finding ", "Match your achieve skill", "Grab your online dream job"]}
                             typingSpeed={75}
@@ -59,7 +59,7 @@ const Banner = () => {
                 </div>
 
                 {/* picture section  */}
-                <div className='w-96'>
+                <div className='w-full h-full object-cover rounded-lg'>
                     <Lottie animationData={deskWork} loop={true} />
                 </div>
             </div>
