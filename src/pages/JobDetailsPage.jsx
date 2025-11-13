@@ -23,7 +23,7 @@ const JobDetailsPage = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                axios.delete(`https://freelance-marketplace-server-theta.vercel.app/deleteJob/${_id}`)
+                axios.delete(`http://localhost:3000/deleteJob/${_id}`)
                     .then(data => console.log(data))
                 Swal.fire({
                     title: "Deleted!",
@@ -35,6 +35,8 @@ const JobDetailsPage = () => {
         });
     }
 
+    const now = new Date()
+
     const handleAccept = () => {
         const acceptData = {
             title: title,
@@ -43,10 +45,18 @@ const JobDetailsPage = () => {
             coverImage: coverImage,
             postedBy: userEmail,
             postedAt: postedAt,
-            addedBy: user.email
+            addedBy: user.email,
+            acceptedAt: now.toLocaleString('en-CA', {
+    month: '2-digit',
+    day: '2-digit',
+    year: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true
+})
         }
 
-        axios.post(`https://freelance-marketplace-server-theta.vercel.app/my-accepted-tasks`, acceptData)
+        axios.post(`http://localhost:3000/my-accepted-tasks`, acceptData)
             .then(data => console.log(data))
         toast.success("Job accepted")
     }

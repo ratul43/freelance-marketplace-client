@@ -10,13 +10,13 @@ const AcceptTaskPage = () => {
     const [acceptJob, setAcceptJob] = useState([])
 
     useEffect(()=>{
-        axios.get(`https://freelance-marketplace-server-theta.vercel.app/my-accepted-tasks?email=${user.email}`)
+        axios.get(`http://localhost:3000/my-accepted-tasks?email=${user.email}`)
         .then(data => setAcceptJob(data.data))
     }, [user.email])
 
     const handleDelete = (value) => {
       
-      axios.delete(`https://freelance-marketplace-server-theta.vercel.app/doneJobs?id=${value}`)
+      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
       .then(()=>{
         
       setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
@@ -31,7 +31,7 @@ const AcceptTaskPage = () => {
 
     const handleCancel = (value) => {
       
-      axios.delete(`https://freelance-marketplace-server-theta.vercel.app/doneJobs?id=${value}`)
+      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
       .then(()=>{
         
       setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
@@ -43,8 +43,6 @@ const AcceptTaskPage = () => {
         toast.error(error.message)
       })
     }
-
-    console.log(acceptJob);
     
 
   if(acceptJob.length == 0){
@@ -72,6 +70,9 @@ const AcceptTaskPage = () => {
                 </p>
                 <p className="text-sm text-gray-500 mt-2">
                   Posted by: {job.postedBy}
+                </p>
+                <p className="text-sm font-semibold text-gray-500 mt-2">
+                  Accepted at: {job.acceptedAt}
                 </p>
               </div>
               <div className="flex md:flex-row flex-col gap-2">

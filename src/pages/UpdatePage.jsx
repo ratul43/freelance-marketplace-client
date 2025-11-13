@@ -32,7 +32,7 @@ const UpdatePage = () => {
         e.preventDefault();
         console.log('Updated Job:', formData);
         
-         axios.put(`https://freelance-marketplace-server-theta.vercel.app/updateJob/${details._id}`, formData)
+         axios.put(`http://localhost:3000/updateJob/${details._id}`, formData)
         .then(data => console.log(data)
         )
 
