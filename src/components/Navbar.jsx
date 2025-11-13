@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../provider/AuthContext';
 
 const Navbar = () => {
@@ -37,18 +37,123 @@ const Navbar = () => {
   const navLinks = (
     user ? (
       <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/allJobs">All Jobs</Link></li>
-      <li><Link to="/addJob">Add a Job</Link></li>
-      <li><Link to="/my-accepted-tasks">My Accepted Tasks</Link></li>
-      <li><Link to="/myPostedJobs">My Added Jobs</Link></li>
+      <li>
+        <NavLink
+        to="/"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        Home
+      </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+        to="/allJobs"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        All Jobs
+      </NavLink>
+        </li>
+
+      <li>
+        <NavLink
+        to="/addJob"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        Add a Job
+      </NavLink>
+        </li>
+
+      <li>
+        <NavLink
+        to="/my-accepted-tasks"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        My Accepted Tasks
+      </NavLink>
+        </li>
+
+      <li><NavLink
+        to="/myPostedJobs"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        My Added Jobs
+      </NavLink></li>
      
       </>
       
     ) : (
       <>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/allJobs">All Jobs</Link></li>
+      <li><NavLink
+        to="/"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        Home
+      </NavLink></li>
+      <li>
+        <NavLink
+        to="/allJobs"
+        className={({ isActive, isPending }) =>
+          `rounded-lg transition-colors ${
+            isPending 
+              ? "bg-gray-300 text-gray-600" 
+              : isActive 
+              ? "underline underline-offset-3 text-gray-600" 
+              : ""
+          }`
+        }
+      >
+        All Jobs
+      </NavLink>
+        </li>
       </>
       
 

@@ -40,7 +40,7 @@ const AddJobPage = () => {
         
         
 
-        axios.post('http://localhost:3000/addJob', formData)
+        axios.post('https://freelance-marketplace-server-theta.vercel.app/addJob', formData)
         .then(data => console.log(data)
         )
 

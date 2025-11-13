@@ -12,7 +12,7 @@ const Banner = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:3000/latest-jobs')
+        fetch('https://freelance-marketplace-server-theta.vercel.app/latest-jobs')
             .then(res => res.json())
             .then(data => {
                 setJobs(data)

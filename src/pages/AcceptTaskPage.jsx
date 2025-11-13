@@ -10,13 +10,13 @@ const AcceptTaskPage = () => {
     const [acceptJob, setAcceptJob] = useState([])
 
     useEffect(()=>{
-        axios.get(`http://localhost:3000/my-accepted-tasks?email=${user.email}`)
+        axios.get(`https://freelance-marketplace-server-theta.vercel.app/my-accepted-tasks?email=${user.email}`)
         .then(data => setAcceptJob(data.data))
     }, [user.email])
 
     const handleDelete = (value) => {
       
-      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
+      axios.delete(`https://freelance-marketplace-server-theta.vercel.app/doneJobs?id=${value}`)
       .then(()=>{
         
       setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))
@@ -31,7 +31,7 @@ const AcceptTaskPage = () => {
 
     const handleCancel = (value) => {
       
-      axios.delete(`http://localhost:3000/doneJobs?id=${value}`)
+      axios.delete(`https://freelance-marketplace-server-theta.vercel.app/doneJobs?id=${value}`)
       .then(()=>{
         
       setAcceptJob(prevJobs => prevJobs.filter(job=> job._id !== value))

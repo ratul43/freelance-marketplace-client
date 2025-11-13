@@ -13,13 +13,13 @@ const AllJobPage = () => {
     useEffect(()=>{
 
       setLoading(true)
-      let url = "http://localhost:3000/allJobs"
+      let url = "https://freelance-marketplace-server-theta.vercel.app/allJobs"
 
       if(sortOrder === "post-asc") {
-        url = "http://localhost:3000/sort-ascending"
+        url = "https://freelance-marketplace-server-theta.vercel.app/sort-ascending"
       }
       else if (sortOrder === "post-desc") {
-        url = "http://localhost:3000/sort-descending"
+        url = "https://freelance-marketplace-server-theta.vercel.app/sort-descending"
       }
 
 axios.get(url)

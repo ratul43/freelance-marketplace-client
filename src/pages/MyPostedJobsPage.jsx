@@ -16,7 +16,7 @@ const MyPostedJobsPage = () => {
   useEffect(() => {
     if (user) {
       axios
-        .get(`http://localhost:3000/myAddedJobs?email=${user.email}`)
+        .get(`https://freelance-marketplace-server-theta.vercel.app/myAddedJobs?email=${user.email}`)
         .then((data) => setPostedJob(data.data.result));
     }
   }, [user]);
@@ -33,7 +33,7 @@ const MyPostedJobsPage = () => {
 }).then((result) => {
   if (result.isConfirmed) {
 
-    axios.delete(`http://localhost:3000/deleteJob/${id}`)
+    axios.delete(`https://freelance-marketplace-server-theta.vercel.app/deleteJob/${id}`)
     .then(data => console.log(data)
     
     )
